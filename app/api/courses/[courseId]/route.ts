@@ -2,21 +2,25 @@ import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
-export async function POST(
-    req: Request
+export async function PATCH(
+    req: Request,
+    { params }: { params: { courseId: string } }
 ) {
     try {
         const { userId } = auth()
-        const { title } = await req.json()
+
+        const values = await req.json()
 
         if (!userId) {
             return new NextResponse("Unauthorize", { status: 401 })
         }
 
-        const course = await db.course.create({
+        const course = await db.course.update({
             data: {
-                title,
-                userId
+                ...values
+            },
+            where: {
+                id: params.courseId
             }
         })
 

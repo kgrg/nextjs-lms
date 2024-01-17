@@ -3,7 +3,6 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import exp from "constants";
 
-
 const backgroundVariants = cva(
     "rounded-full flex items-center justify-center",
     {
@@ -25,7 +24,7 @@ const backgroundVariants = cva(
 )
 
 const iconVariants = cva(
-    "d",
+    "",
     {
         variants: {
             variant: {
