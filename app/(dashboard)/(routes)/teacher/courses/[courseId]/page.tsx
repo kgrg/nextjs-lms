@@ -5,6 +5,9 @@ import { LayoutDashboard } from "lucide-react";
 import { redirect } from "next/navigation";
 
 import { use } from "react";
+import TitleForm from "./components/title-form";
+import { Description } from "@radix-ui/react-dialog";
+import DescriptionForm from "./components/description-form";
 
 const CourseIdPage = async ({
     params
@@ -61,11 +64,19 @@ const CourseIdPage = async ({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
                 <div>
                     <div className="flex items-center gap-x-2">
-                        <IconBadge size="large" icon={LayoutDashboard} />
+                        <IconBadge size="small" icon={LayoutDashboard} />
                         <h2 className="text-xl">
                             Customize your course
                         </h2>
                     </div>
+                    <TitleForm
+                        initialData={course}
+                        courseId={params.courseId}
+                    />
+                    <DescriptionForm
+                        initialData={course}
+                        courseId={params.courseId}
+                    />
                 </div>
             </div>
         </div>
